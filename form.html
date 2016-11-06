@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <title>Lomake</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Muli|Lato|Rajdhani">
+        <link rel="stylesheet" type="text/css" href="project.css">
+        <!--Makes IE use the newest rendering mode-->
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <meta name="viewport" content="width-device-width, initial-scale=1">
+        
+        <style>
+            
+            #formWrapper {
+                font-family: "Rajdhani", Rajdhani, sans-serif;
+                font-size: 1em;             
+                overflow: hidden;
+                padding-bottom: 5px;
+            }
+
+            h2 {
+                font-family: "Muli Black", Muli, sans-serif;
+                font-size: 1.75em;
+                padding: 0;
+                padding-top: 5px;
+                padding-bottom: 10px;
+                margin: 0;
+                font-weight: normal;
+            }
+			
+            #break {
+                height: 1.2em;   
+            }
+
+            #sex {
+                border: 1px solid transparent;
+            }
+
+            .changeBorder {
+                border: 1px solid gray;
+            }
+
+            .required, .required#sex {
+                background-color: yellow;
+                border: 1px solid red;
+            } 
+
+            .input.required {
+                overflow: hidden;
+                width: 150px;
+            }
+
+			.otherCarMark {
+                display: none;
+            }
+			
+            @media screen and (min-width: 400px) {
+                 #formWrapper div {
+                    margin-left: 50px;
+                }  
+
+                .title {
+                    float: left;
+                    display: inline-block;
+                    width: 80px;
+                    text-align: right;
+                    padding-right: 5px;
+                }
+                
+                .input {
+                    padding-left: 85px;
+                }
+
+                .input.required {
+                    padding-left: 0px;
+                }
+				
+				.otherCarMark {
+					display: none;
+				}
+            }
+
+			@media screen and (min-width: 550px) {
+
+                h2 {
+                    margin-left: 20px;
+                }
+
+                #formWrapper {
+                    margin-left: 170px;
+                    border-left: 2px dotted orange;
+                }
+			}
+        </style>
+    </head>
+
+    <body onload="nullIndex()">
+
+        <a id="toNavigation" onclick="openMenu()">
+            <div class="iconDash"></div>
+            <div class="iconDash"></div>
+            <div class="iconDash"></div>
+        </a>
+        <div id="headerBackground"> 
+            <div id="wrapperHeader">     
+                
+                <h1>EX NIHILO NIHIL FIT</h1>
+
+                <nav id="navigation">
+                    <ul>
+                        <li><a href="index.html">
+                            Front page
+                        </a></li>   
+                        
+                        <li><a class="active" href="#form">
+                            Form
+                        </a></li>
+
+                        <li><a href="table.html">
+                            Table
+                        </a></li>
+
+                        <li><a href="#Laudantium"> 
+                            Laudantium
+                        </a></li>
+
+                        <li><a href="#Quisque"> 
+                            Quisque
+                        </a></li>
+
+                        <li><a href="#Venenatis"> 
+                            Venenatis
+                        </a></li>
+
+                        <li><a href="#Dignissim"> 
+                            Dignissim
+                        </a></li>
+
+                        <li><a href="#Ultrices"> 
+                            Ultrices
+                        </a></li>
+                    </ul>  
+                </nav>
+            </div>  
+        </div>  
+        <div id="whiteBackground">
+            <div id="wrapper">
+                <div id="sidebody">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                    laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+                    beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+                    odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+                    sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
+                    voluptatem?
+                </div>
+
+                <div id="formWrapper">
+
+                    <h2>Form</h2>
+
+                    <form name="harjoitustyo" action="LomakeNEW.html" method="post" onsubmit="return checkForm()">                  
+        				<div class="title">
+        					Sukunimesi:
+        				</div>
+
+        				<div class="input">
+        					<input name="sukunimi" id="name" class="changeBorder" onkeyup="checkName()" type="text" size="25"/>
+        				</div>  
+        				
+        				<br/>                 
+        				
+        				<div class="title">
+        					Sukupuolesi:
+        				</div>
+
+        				<div class="input" id="sex" onchange="checkGender()">
+        					<input name="sukupuoli[]" type="radio" id="mies" value="mies"/>
+        					<label for="mies">Mies</label>
+        				
+                            <br/>
+        				
+        					<input name="sukupuoli[]" type="radio" id="nainen" value="nainen"/>
+        					<label for="nainen">Nainen</label>                   
+        			
+        			         <br/>
+        				
+        					<input name="sukupuoli[]" type="radio" id="jotainMuuta" value="jotainMuuta"/>
+        					<label for="jotainMuuta">En halua sanoa</label> 
+        				</div>
+        				
+        				<br/>
+        				
+        				<div class="title">
+        					Autosi:
+        				</div>
+
+        				<div class="input">
+        					<select name="automerkki" id="auto" class="changeBorder" onchange="checkCar()"> 
+        						<option value="valitse">Valitse automerkkisi</option> 
+        						<option value="lada">Lada</option>
+        						<option value="mosse">Mosse</option>
+        						<option value="volga">Volga</option>
+        						<option value="vartburg">Vartburg</option>
+        						<option value="ferrari">ferrari</option>
+        						<option value="muu">Muu</option>   
+        					</select>
+        				</div>
+        			
+        				<br/>		
+						
+						<div class="title otherCarMark">
+							Muu, mikä?
+						</div>
+
+						<div class="input otherCarMark">
+							<input name="otherCar" id="muuAuto" class="changeBorder" type="text" size="25" onkeyup="checkMuu()"/>
+						</div>
+								
+						<div id="break" class="otherCarMark"></div>
+        				
+        				<div class="input">
+        					<input name="lähetäLomake" id="submitButton" value="Lähetä" type="submit"/>
+        				</div>							
+                    </form>   
+                </div>
+            </div>
+        </div>
+
+        <footer>
+           <div id="footerWrapper">
+                <ul>
+                   <li><a href="#1-Cras-Metus">
+                        1 Cras metus
+                    </a></li>   
+                    
+                    <li><a href="#1-Sed-aliquet-risus">
+                        1 Sed aliquet risus  
+                    </a></li>
+
+                    <li><a href="#1-Integer-id-quam ">
+                        1 Integer id quam 
+                    </a></li>
+
+                    <li><a href="#1-Morbi-mi"> 
+                        1 Morbi mi
+                    </a></li>
+
+                    <li><a href="#1-Quisque-nisl-felis"> 
+                        1 Quisque nisl felis
+                    </a></li>
+
+                    <li><a href="#1-Venenatis-tristique"> 
+                        1 Venenatis tristique
+                    </a></li>
+
+                    <li><a href="#1-Dignissim-in"> 
+                        1 Dignissim in
+                    </a></li>
+
+                    <li><a href="#1-Ultrices-sit-amet"> 
+                        1 Ultrices sit amet
+                    </a></li>
+                </ul>  
+                  
+                <ul>
+                    <li><a href="#2-Cras-metus">
+                        2 Cras metus
+                    </a></li>   
+                    
+                    <li><a href="#2-Sed-aliquet-risus">
+                        2 Sed aliquet risus
+                    </a></li>
+
+                    <li><a href="#2-Integer-id-quam">
+                        2 Integer id quam
+                    </a></li>
+
+                    <li><a href="#2-Morbi-mi"> 
+                        2 Morbi mi
+                    </a></li>
+
+                    <li><a href="#2-Quisque-nisl-felis"> 
+                        2 Quisque nisl felis
+                    </a></li>
+
+                    <li><a href="#2-Venenatis-tristique"> 
+                        2 Venenatis tristique
+                    </a></li>
+
+                    <li><a href="#2-Dignissim-in"> 
+                        2 Dignissim in
+                    </a></li>
+
+                    <li><a href="#2-Ultrices-sit-amet"> 
+                        2 Ultrices sit amet
+                    </a></li>
+                </ul>  
+                    
+
+                   
+                <ul>
+                    <li><a href="#3-Cras-metus">
+                        3 Cras metus
+                    </a></li>   
+                    
+                    <li><a href="#3-Sed-aliquet-risus">
+                        3 Sed aliquet risus
+                    </a></li>
+
+                    <li><a href="#3-Integer-id-quam">
+                        3 Integer id quam
+                    </a></li>
+
+                    <li><a href="#3-Morbi-mi"> 
+                        3 Morbi mi
+                    </a></li>
+
+                    <li><a href="#3-Quisque-nisl-felis"> 
+                        3 Quisque nisl felis
+                    </a></li>
+
+                    <li><a href="#3-Venenatis-tristique"> 
+                        3 Venenatis tristique
+                    </a></li>
+
+                    <li><a href="#3-Dignissim-in"> 
+                        3 Dignissim in
+                    </a></li>
+
+                    <li><a href="#3-Ultrices-sit-amet"> 
+                        3 Ultrices sit amet
+                    </a></li>
+                </ul>       
+            </div>
+        </footer>
+
+        <script type="text/javascript">
+
+/*------------------FORM SCRIPT---------------------------*/
+
+    var isOkayToSend = false;
+    var sex = false;
+    var otherCar = true;
+    var index;
+    var hiddenElements = document.getElementsByClassName("otherCarMark");
+
+    // Called before submit
+    function checkForm() {
+        index = document.harjoitustyo.automerkki.selectedIndex;
+        otherCar = true;
+
+        var name = checkName();
+        var car = checkCar();
+        var gender = checkGender();
+        if (index == 6) {
+            checkMuu();
+        }
+        
+        if (name && car && gender && otherCar) {
+            isOkayToSend = true;
+            alert("Lomake on lähetetty onnistuneesti!");
+        } else {
+            isOkayToSend = false;
+        }
+
+        return isOkayToSend;
+    }
+
+    // Called onkeyup on Sukunimesi and before submit
+    function checkName() {
+        if (document.harjoitustyo.sukunimi.value.length >= 3) {
+            document.harjoitustyo.sukunimi.className = "changeBorder";
+            return true;
+        } else {
+            document.harjoitustyo.sukunimi.className = "required";
+            return false;
+        }
+    }
+
+    // Called onchange to Autosi and before submit
+    function checkCar() {
+        index = document.harjoitustyo.automerkki.selectedIndex;
+        if (index == 0) {
+            document.harjoitustyo.automerkki.className = "required";
+			for (a = 0; a < hiddenElements.length; a++) {
+				hiddenElements[a].style.display = "none";
+			}
+
+            return false;
+
+        } else if (index == 6) {
+            document.harjoitustyo.automerkki.className = "changeBorder";
+            for (a = 0; a < hiddenElements.length; a++) {
+				hiddenElements[a].style.display = "block";
+			}
+            
+            return otherCar;
+        
+        } else {
+            document.harjoitustyo.automerkki.className = "changeBorder";
+            for (a = 0; a < hiddenElements.length; a++) {
+				hiddenElements[a].style.display = "none";
+			}
+
+            return true;
+        }
+    }
+
+    // Called onkeyup and before submit when visible
+    function checkMuu() {
+        if (document.harjoitustyo.muuAuto.value.length >= 3) {
+            document.harjoitustyo.muuAuto.className = "changeBorder";
+            otherCar = true;
+        } else {
+            document.harjoitustyo.muuAuto.className = "required";
+            otherCar = false;
+        }
+    }
+
+    // Called onchange to Sukupuolesi and before submit
+    function checkGender() {
+        var gender = document.getElementsByName("sukupuoli[]");
+        for (var a = 0; a < gender.length; a++) {
+            if (gender[a].checked) {
+                sex = true;
+            }
+        }
+
+        if (sex) {
+            document.getElementById("sex").className = "input";
+            return true;
+        } else {
+            document.getElementById("sex").className = "input required";
+            return false;
+        }
+    }
+	
+	function nullIndex() {
+		document.harjoitustyo.automerkki.selectedIndex = 0;
+	}
+
+/*----------MOBILE HAMBURGER MENU----------------------------------*/
+ 
+    var isClosed = false;
+    
+    // Called when clicking hamburger menu
+    function openMenu() {  
+        if (isClosed) {
+            document.getElementById("navigation").style.display = "none";
+            document.getElementById("toNavigation").className = "clear";
+        } else {
+            document.getElementById("navigation").style.display = "block";
+            document.getElementById("toNavigation").className = "active";
+        }
+
+        isClosed = !isClosed;
+    }
+    
+    // Called everytime browser's window size changes
+    window.onresize = function showNavi() {
+        if (window.innerWidth > 550) {
+            document.getElementById("navigation").style.display = "block";
+            document.getElementById("toNavigation").className = "clear";
+            isClosed = false;
+        } else {
+            if (!isClosed) {
+                document.getElementById("navigation").style.display = "none";
+            }
+        }
+    }
+
+    </script>
+
+    <noscript> 
+        Please enable Javascript, otherwise the form and hamburger menu do not work properly.
+    </noscript>
+
+    </body>
+</html>

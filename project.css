@@ -1,0 +1,312 @@
+/*--------------------------MOBILE STYLE / BASE STYLE-----------------------------*/
+
+body {
+    font-size: 100%; /*16px*/
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /*korjaus IE6 ja 7 bugiin*/
+    zoom: 1;
+	background-color: lightgray; 
+}
+
+/*-----------------HEADER--------------*/
+
+#headerBackground {
+    background-color: #c00;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    font-family: "Muli Black", Muli, sans-serif;
+    color: orange;
+    font-size: 1.75em;
+    font-weight: normal;
+    padding: 0.5em 0;
+}
+
+/*------Hamburger menu-------*/
+
+#toNavigation {
+    float: left;
+    margin: auto 0;
+    margin-left: 0.75em;
+    margin-top: 0.9em;
+    color: white;
+    background-color: #c00;
+    border: solid white 3px;
+    border-radius: 4px;
+}
+
+#toNavigation:hover, #toNavigation.active {
+    border: solid yellow 3px;
+}
+
+.iconDash {
+    padding: 2px;
+    width: 15px;
+    margin: 4px;
+    background-color: white;
+}
+
+#toNavigation:hover div, #toNavigation.active div {
+    background-color: yellow;
+}
+
+/*-------------MAIN CONTENT---------------*/
+
+#sidebody {
+    display: none;
+    float: left;
+    clear: both;
+    width: 160px;
+    margin: 10px 0;
+    margin-right: 0;
+    padding: 0;
+    padding-bottom: 10px;
+    font-family: "Rajdhani", Rajdhani, sans-serif;
+}
+
+#whiteBackground {
+    background-color: white;
+}
+
+#whiteBackground:after {
+    clear: both;
+    display: block;
+    content: "";
+    overflow: auto;
+}
+
+#wrapper, #footerWrapper, #wrapperHeader {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+#wrapper {
+    padding: 10px;
+}
+
+/*----------------------FOOTER---------------*/
+
+#footerWrapper {
+    text-align: center;
+}
+
+footer {
+    clear: both;
+    border-top: 2px dotted orange;
+}
+
+footer ul {
+    list-style: none;
+    display: inline-block;
+    padding: 0px 30px;
+    margin: 20px 0;
+}
+
+footer ul li {
+    border-top: 1.5px dotted black;
+    text-align: left;
+    width: 12em;
+}
+
+footer ul li a {
+    padding: 3px 8px;
+}
+
+footer li:last-child {
+    border-bottom: 1.5px dotted black;
+}
+
+footer ul li a:active, footer ul li a:hover {
+    color: orange;
+}
+
+/*----------NAVIGATION---------------*/
+
+/* For navigation and footer links*/
+ul li a {
+    color: #900;
+    text-decoration: none;
+    font-family: "Muli Black", Muli, sans-serif;
+}
+
+nav {
+    display: none;
+    width: 100%;
+    float: left;
+    clear: both;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav ul a {  
+    display: block;
+    background-color: white;    
+    border-left: 5px solid orange;
+    border-bottom: 1px dashed orange;
+    padding: 3px;
+    padding-right: 0;
+    margin: 5px 0;
+}
+
+nav ul a.active {
+    border-left-color: orange;
+    background-color: lightgray;
+}
+
+nav ul a:hover {
+    border-left-color: green;
+    background-color: lightgray;
+}
+
+nav ul a:active {
+    border-left-color: green;
+    background-color: orange;
+    color: white;
+}
+
+nav ul a.active:active {
+    border-left-color: green;
+    background-color: lightgray;
+    color: #900;
+}
+
+/*------------------------------MOBILE STYLE ONLY---------------------------------------*/
+
+@media screen and (max-width: 400px) {
+    #toNavigation {
+        margin-top: 0.7em;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 283px) {
+    #toNavigation {
+        margin-top: 1.4em;
+        margin-left: 0.8em;
+    }
+}
+
+/*---------------------------------TABLET STYLE------------------------------------------*/
+
+@media screen and (min-width: 550px) {
+
+    h1 {
+        font-size: 2em;
+    }
+
+    /*------NAVIGATION-----------*/
+    nav {
+        width: 150px;
+        margin-left: 10px;
+        margin-top: 5px;
+        display: block;
+    }
+
+    #toNavigation {
+        display: none;
+    }
+
+    /*-----------MAIN BODY-----------*/
+    #sidebody {
+        display: block;
+    }
+}
+
+/*------------------------------DESKTOP STYLE---------------------------------------*/
+
+@media screen and (min-width: 770px) {
+
+    /*---------------HEADER-------------------*/
+
+    h1 {
+        font-size: 2em;
+    }
+
+    #headerBackground {
+        overflow: auto;
+    }     
+
+    /*------------MAIN CONTENT--------------*/   
+
+    #sidebody {
+        margin: 0;
+    }      
+
+    /*--------------NAVIGATION-----------------*/
+
+    nav {
+        float: none;
+        width: 100%;
+        margin: 0;
+    }
+
+    nav ul li {
+        display: inline;
+    }
+
+    nav ul a {
+        float: left;
+        width: 7em;
+        border: 0;
+        border-bottom: 3px solid orange;
+        padding: 0;
+        padding-top: 2px;
+        margin: 0;
+        margin-right: 5px;
+        background-color: orange;
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        font-size: 0.8em;
+    }
+
+    nav li:last-child a {
+        margin-right: 0;
+    }
+
+    nav ul a.active {
+        border-bottom-color: orange;
+        background-color: white;
+        color: #900;
+    }
+
+    nav ul a:hover {
+        background-color: white;
+        border-bottom-color: green; 
+        color: orange;
+    }
+
+    nav ul a.active:hover {
+        color: #900;
+    }
+
+    nav ul a:active {
+        border-bottom-color: green;
+        background-color: white;
+        color: #900;
+    }
+
+    /* Overwrites previous :active.active background-color: lightgrey */
+    nav ul a:active.active {
+        background-color: white;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    #wrapper {
+        padding: 10px 0;
+    }
+}
